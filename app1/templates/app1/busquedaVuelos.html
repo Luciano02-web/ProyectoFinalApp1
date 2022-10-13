@@ -1,0 +1,26 @@
+{% extends "app1/padre.html" %}
+
+
+
+{% block titulo %}
+
+<h1>En esta seccion vamos a buscar vuelos por su salida</h1>
+
+
+
+<form action="/app1/buscar" method="GET">
+    <p>
+        <div>
+
+        <h6>Ingrese aqui la salida</h6>
+
+        <input type="text" name="salida" id="salida">
+
+        <input type="submit" value="Buscar">
+
+        </div>
+    
+    </p>
+</form>
+
+{% endblock %}

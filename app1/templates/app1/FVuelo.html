@@ -1,0 +1,29 @@
+{% extends "app1/padre.html" %}
+
+
+
+{% block titulo %}
+
+<h1>En esta seccion agregue los datos del vuelo</h1>
+
+
+<form action = "" method="POST"> {% csrf_token %}
+            
+    <table>
+        <p>
+            <div>
+                <h4>Ingrese datos del vuelo</h4>
+                <h6>La fecha ingrese como (AAAA-MM-DD)(2021-03-13)</h6>
+                <h6>La hora ingrese como (HH:MM)(02:15)</h6>
+                {{formulario1.as_table}}
+            </div>
+        </p>
+    </table>
+
+                    
+    <input type="submit" value="ENVIAR">
+                    
+</form>
+  
+
+{% endblock %}

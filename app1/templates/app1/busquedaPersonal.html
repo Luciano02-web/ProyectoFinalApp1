@@ -1,0 +1,25 @@
+{% extends "app1/padre.html" %}
+
+
+
+{% block titulo %}
+
+<h1>En esta seccion vamos a buscar al personal por su profesion</h1>
+
+
+<form action="/app1/buscar_per" method="GET">
+    <p>
+        <div>
+
+            <h6>Ingrese aquí la profesion</h6>
+
+            <input type="text" name="profesion" id="profesion">
+        
+            <input type="submit" value="Buscar">
+
+        </div>
+    
+    </p>
+</form>
+
+{% endblock %}

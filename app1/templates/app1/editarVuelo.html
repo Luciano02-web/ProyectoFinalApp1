@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action = "" method="POST"> {% csrf_token %}
+            
+        <table>
+            <p>
+                <div>
+                    <h4>Ingrese datos del vuelo</h4>
+                    <h6>La fecha ingrese como (AAAA-MM-DD)(2021-03-13)</h6>
+                    <h6>La hora ingrese como (HH:MM)(02:15)</h6>
+                    {{formulario1.as_table}}
+                </div>
+            </p>
+        </table>
+    
+                        
+        <input type="submit" value="ENVIAR">
+
+</body>
+</html>

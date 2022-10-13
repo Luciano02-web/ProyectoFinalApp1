@@ -1,0 +1,33 @@
+{% extends "app1/padre.html" %}
+
+
+
+{% block titulo %}
+
+<h1>En esta seccion agregue los datos del personal</h1>
+
+
+
+<form action = "" method="POST"> {% csrf_token %}
+            
+    <table>
+        <p>
+
+            <div>
+
+                <h6>Ingrese datos del personal</h6>
+                    
+                {{formulario2.as_table}}
+
+            </div>
+            
+        </p>
+    </table>
+
+                    
+    <input type="submit" value="ENVIAR">
+                    
+</form>
+  
+
+{% endblock %}

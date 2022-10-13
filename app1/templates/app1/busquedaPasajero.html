@@ -1,0 +1,25 @@
+{% extends "app1/padre.html" %}
+
+
+
+{% block titulo %}
+
+<h1>En esta seccion vamos a buscar los pasajeros por su numero de vuelo</h1>
+
+
+
+<form action="/app1/buscar_pasa" method="GET">
+    <p>
+        <div>
+
+            <h6>Ingrese numero de vuelo</h6>
+            
+            <input type="number" name="id_vuelo" id="id_vuelo">
+
+            <input type="submit" value="Buscar">
+        </div>
+        
+    </p>
+</form>
+
+{% endblock %}

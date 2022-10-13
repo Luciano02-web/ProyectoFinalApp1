@@ -1,0 +1,31 @@
+{% extends "app1/padre.html" %}
+
+
+
+{% block titulo %}
+
+<h1>En esta seccion agregue los datos del pasajero</h1>
+
+
+
+
+<form action = "" method="POST"> {% csrf_token %}
+            
+    <table>
+        <p>
+
+
+            <div>
+                {{formulario3.as_table}}
+
+            </div>        
+            
+        </p>
+    </table>
+
+                    
+    <input type="submit" value="ENVIAR">
+                    
+</form>
+  
+{% endblock %}
