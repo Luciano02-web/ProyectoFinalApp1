@@ -7,6 +7,10 @@ urlpatterns = [
     path('personal/', personal),
     path('pasajero/', pasajero),
 
+#URL Login
+    path('login/', InicioSesion, name="Login"),
+    path('registro/', registro, name="Registro"),
+
 #URL DE CREACION
     path('formulario1/', formulariovuelo, name="Crear Vuelos"),
     path('formulario2/', formulariopersonal, name="Crear Personal"),
