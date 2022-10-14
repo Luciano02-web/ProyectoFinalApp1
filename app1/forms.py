@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 
 class FormuVuelo(forms.Form):
@@ -20,3 +22,15 @@ class FormuPasajero(forms.Form):
     apellido = forms.CharField(max_length=50)
     documento = forms.IntegerField()
     id_vuelo = forms.IntegerField()
+
+class FormularioRegistro(UserCreationForm):
+    email = forms.EmailField(label='Ingrese email')
+    first_name= forms.CharField(label='Ingrese nombre')
+    last_name= forms.CharField(label='Ingrese apellido')
+    password1 = forms.CharField(label='Ingrese la contraseña', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Repita la contraseña', widget=forms.PasswordInput)
+
+    class Meta:
+
+        model = User
+        fields = ["username","first_name","last_name","email","password1","password2"]
