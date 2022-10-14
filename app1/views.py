@@ -5,7 +5,62 @@ from django.http import HttpResponse
 from app1.models import *
 from app1.forms import *
 
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm #se importa el AuthenticationForm para el inicio de sesion
+from django.contrib.auth import login, authenticate
+
+
 # Create your views here.
+
+#Login
+
+def InicioSesion(request):
+    
+    if request.method == "POST":
+
+        form = AuthenticationForm(request, data = request.POST)
+
+        if form.is_valid():
+
+            usuario = form.cleaned_data.get("username")
+            contra = form.cleaned_data.get("password")
+            
+            user = authenticate(username = usuario, password = contra)
+
+            if user:
+
+                login(request, user)
+
+                return render(request, "app1/inicio.html", {"mensaje":f"Bienvenido {user}"})
+        
+        else:
+
+            return render(request, "app1/inicio.html", {"mensaje": "Datos incorrectos"})
+        
+    
+    else:
+
+        form = AuthenticationForm()
+
+    return render(request, "app1/login.html", {"formulario":form})
+
+
+def registro(request):
+
+    if request.method == "POST":
+
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data["username"]
+            form.save()
+            return render(request, "app1/inicio.html", {"mensaje": "Usuario creado."})
+    
+    else:
+
+        form = UserCreationForm()
+    
+    return render(request, "app1/registro.html", {"formulario":form})
 
 
 def inicio(request):
