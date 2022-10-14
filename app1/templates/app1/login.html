@@ -1,7 +1,5 @@
 {% extends "app1/padre.html" %}
 
-{% load static %}
-
 
 {% block titulo %}
 
@@ -16,10 +14,10 @@ Inicio de sesión
 <form action=""method="POST">{% csrf_token %}
 
 
-    {{formulario.as_p}}
+    {{f1.as_p}}
 
     
-    <button type="submit">Iniciar sesión</button>
+    <button type="submit">Iniciar sesion</button>
 
 
 

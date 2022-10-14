@@ -4,7 +4,7 @@ from django.db import models
 
 class Vuelo(models.Model):
     def __str__(self):
-        return f'Vuelo: {self.id_vuelo} sale el: {self.fecha}'
+        return f'Vuelo: {self.id_vuelo} ----- sale el: {self.fecha}'
     id_vuelo = models.IntegerField()
     salida = models.CharField(max_length=50)
     destino = models.CharField(max_length=50)
@@ -13,7 +13,7 @@ class Vuelo(models.Model):
 
 class Personal(models.Model):
     def __str__(self):
-        return f'Personal: {self.profesion} del vuelo: {self.id_vuelo}'
+        return f'Personal: {self.profesion} ----- del vuelo: {self.id_vuelo}'
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     profesion = models.CharField(max_length=50)
@@ -21,7 +21,7 @@ class Personal(models.Model):
 
 class Pasajero(models.Model):
     def __str__(self):
-        return f'Pasajero: {self.nombre} {self.apellido} DNI:{self.documento}' 
+        return f'Pasajero: {self.nombre} {self.apellido}------ DNI:{self.documento}' 
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     documento = models.IntegerField()
