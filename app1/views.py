@@ -7,7 +7,6 @@ from app1.forms import *
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm #se importa el AuthenticationForm para el inicio de sesion
 from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 
 
@@ -83,10 +82,17 @@ def buscar(request):
     if request.GET["salida"]:
         busqueda = request.GET["salida"]
         vuelos = Vuelo.objects.filter(salida=busqueda)#puede ir tambien camada__icontains = busqueda
-        return render(request,"app1/vuelo.html",{"vuelos":vuelos, "busqueda":busqueda})
+        return render(request,"app1/vuelo_b.html",{"vuelos":vuelos, "busqueda":busqueda})
     else:
         mensaje="No enviaste datos."
     return HttpResponse(f"Estoy buscando el vuelo que sale de: {busqueda}")
+
+@login_required
+#LEER VUELOS
+def leerVuelos(request):
+    fly = Vuelo.objects.all()
+    contexto = {"fly":fly}
+    return render(request,"app1/vuelo.html",contexto)
 
 #ELIMINAR VUELOS
 def eliminaVuelo(request, numVuelo):
@@ -150,10 +156,17 @@ def buscar_per(request):
     if request.GET["profesion"]:
         busqueda_per = request.GET["profesion"]
         personas = Personal.objects.filter(profesion = busqueda_per)
-        return render(request,"app1/personal.html",{"personas":personas, "busqueda_per":busqueda_per})
+        return render(request,"app1/personal_b.html",{"personas":personas, "busqueda_per":busqueda_per})
     else:
         mensaje="No enviaste datos."
     return HttpResponse(f"Estoy buscando la profesión: {busqueda_per}")
+
+@login_required
+#LEER PERSONAL
+def leerPersonal(request):
+    persona = Personal.objects.all()
+    contexto = {"persona":persona}
+    return render(request,"app1/personal.html",contexto)
 
 #ELIMINAR PERSONAL
 def eliminaPersonal(request, profesionPersonal):
@@ -196,7 +209,7 @@ def editarPersonal(request, profesionPersonal):
 def pasajero(request):
     return render(request,'app1/pasajero.html')
 
-# CREACION DE PERSONAL
+# CREACION DE PASAJERO
 def formulariopasajero(request):
     if request.method=="POST":
         formulariopasajero = FormuPasajero(request.POST)
@@ -209,7 +222,7 @@ def formulariopasajero(request):
         formulariopasajero = FormuPasajero()
     return render(request,"app1/FPasajero.html",{"formulario3":formulariopasajero})
 
-#BUSQUEDA DE PERSONAL
+#BUSQUEDA DE PASAJERO
 def busquedaPasajero(request):
     return render(request,"app1/busquedaPasajero.html")
 
@@ -218,23 +231,30 @@ def buscar_pasa(request):
     if request.GET["id_vuelo"]:
         busqueda_pasa = request.GET["id_vuelo"]
         pasajeros = Pasajero.objects.filter(id_vuelo = busqueda_pasa)
-        return render(request,"app1/pasajero.html",{"pasajeros":pasajeros, "busqueda_pasa":busqueda_pasa})
+        return render(request,"app1/pasajero_b.html",{"pasajeros":pasajeros, "busqueda_pasa":busqueda_pasa})
     else:
         mensaje="No enviaste datos."
     return HttpResponse(f"Estoy buscando los pasajeros del vuelo: {busqueda_pasa}")
 
-#ELIMINAR PERSONAL
+@login_required
+#LEER PASAJERO
+def leerPasajero(request):
+    pasa = Pasajero.objects.all()
+    contexto = {"pasa":pasa}
+    return render(request,"app1/pasajero.html",contexto)  
+
+#ELIMINAR PASAJERO
 def eliminaPasajero(request, idvueloPasajero):
-    elimPersonal= Pasajero.objects.get(id_vuelo=idvueloPasajero)
-    elimPersonal.delete()
+    elimPasajero= Pasajero.objects.get(id_vuelo=idvueloPasajero)
+    elimPasajero.delete()
 
     pasajeroElim = Pasajero.objects.all()
     contextoPa = {"staff":pasajeroElim}
     return render (request, "App1/pasajero.html", contextoPa)
 
-#EDITAR PERSONAL
+#EDITAR PASAJERO
 def editarPasajero(request, idvueloPasajero):
-    editPersonal= Pasajero.objects.get(id_vuelo=idvueloPasajero)
+    editPasajero= Pasajero.objects.get(id_vuelo=idvueloPasajero)
     if request.method=="POST":
         
         formulariopasajero = FormuPasajero(request.POST)
@@ -242,17 +262,19 @@ def editarPasajero(request, idvueloPasajero):
         if formulariopasajero.is_valid():
             info = formulariopasajero.cleaned_data
 
-            editPersonal.nombre = info["nombre"]
-            editPersonal.apellido = info["apellido"]
-            editPersonal.documento = info["documento"]
-            editPersonal.id_vuelo = info["id_vuelo"]
+            editPasajero.nombre = info["nombre"]
+            editPasajero.apellido = info["apellido"]
+            editPasajero.documento = info["documento"]
+            editPasajero.id_vuelo = info["id_vuelo"]
 
-            editPersonal.save()
+            editPasajero.save()
             return render(request,"app1/inicio.html")
     else:
-        formulariopasajero = FormuPasajero(initial={"nombre": editPersonal.nombre, "apellido": editPersonal.apellido,
-        "documento": editPersonal.documento, "id_vuelo":editPersonal.id_vuelo })
+        formulariopasajero = FormuPasajero(initial={"nombre": editPasajero.nombre, "apellido": editPasajero.apellido,
+        "documento": editPasajero.documento, "id_vuelo":editPasajero.id_vuelo })
     return render(request,"app1/editarPasajero.html",{"formulario3":formulariopasajero, "idvueloPasajero": idvueloPasajero })
 
-
-
+@login_required
+#BUSCADOR
+def bus(request):
+    return render(request,"app1/buscar.html")

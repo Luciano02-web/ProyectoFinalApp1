@@ -1,0 +1,24 @@
+{% extends "app1/padre.html" %}
+
+
+
+{% block titulo %}
+
+<div>
+    <li>
+        ingrese lo que desea buscar
+    </li>
+
+    <button>
+        <a href="{% url 'Buscar Vuelos' %}">Buscar Vuelos</a>
+    </button>
+    <button>
+        <a href="{% url 'Buscar Personal' %}">Buscar Personal</a>
+    </button>
+    <button>
+        <a href="{% url 'Buscar Pasajeros' %}">Buscar Pasajeros</a>
+    </button>
+    
+</div>
+
+{% endblock %}
