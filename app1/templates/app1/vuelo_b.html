@@ -1,0 +1,51 @@
+{% extends "app1/padre.html" %}
+
+
+{% block titulo %}
+
+Esta página mostrará los vuelos.
+
+{% endblock %}
+
+
+{% block descripcion %}
+
+
+
+<div>
+
+    <p>Estas buscando el vuelo con lugar de salida: {{busqueda}}</p>
+
+    {% for vuelo in vuelos %}
+
+        <ul>
+            <li>Numero de vuelo: {{vuelo.id_vuelo}}</li>
+            <li>Salida: {{vuelo.salida}}</li>
+            <li>Destino: {{vuelo.destino}}</li>
+            <li>Dia: {{vuelo.fecha}}</li>
+            <li>Hora de salida: {{vuelo.hora_de_salida}}</li>
+
+            
+            <button>
+                <a href="{% url 'EliminaVuelo' vuelo.id_vuelo %}"> Eliminar Vuelo</a>
+            </button>
+            <button>
+                <a href="{% url 'EditaVuelo' vuelo.id_vuelo %}"> Editar Vuelo</a>
+            </button>
+
+        </ul>
+        
+    {% endfor %}
+
+
+<button>
+    <a href="{% url 'Crear Vuelos' %}"> Agregar otro Vuelo</a>
+</button>
+    
+
+</div>
+
+
+
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "app1/padre.html" %}
+
+
+
+{% block titulo %}
+
+Esta página mostrará el personal.
+
+{% endblock %}
+
+
+{% block descripcion %}
+
+
+<div>
+
+    <p>Estás buscando el personal con profesion: {{busqueda_per}}</p>
+
+    {% for personal in personas %}
+
+        <ul>
+            <li>Nombre: {{personal.nombre}}</li>
+            <li>Apellido: {{personal.apellido}}</li>
+            <li>Profesion: {{personal.profesion}}</li>
+            <li>Numero de vuelo: {{personal.id_vuelo}}</li>
+
+            <button>
+                <a href="{% url 'EliminaPersonal' personal.profesion %}"> Eliminar Personal</a>
+            </button>
+
+            <button>
+                <a href="{% url 'EditarPersonal' personal.profesion %}"> Editar Personal</a>
+            </button>
+
+        </ul>
+        
+    {% endfor %}
+
+</div>
+
+<button>
+    <a href="{% url 'Crear Personal' %}"> Agregar otro Personal</a>
+</button>
+
+
+{% endblock %}

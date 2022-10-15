@@ -1,6 +1,5 @@
 {% extends "app1/padre.html" %}
 
-{% load static %}
 
 
 {% block titulo %}
@@ -12,30 +11,32 @@ Esta página mostrará los Pasajeros.
 
 {% block descripcion %}
 
-Hay muchos pasajeros.
 <div>
 
-    <p>Estás buscando los pasajeros con número de vuelo: {{busqueda_pasa}}</p>
+    {% for pa in pasa %}
+    
+    <ul>
 
-    {% for pasajero in pasajeros %}
+        <li>
+            Nombre: {{pa.nombre}}--Apelido: {{pa.apellido}}--Documento: {{pa.documento}}--Numero de vuelo: {{pa.id_vuelo}}
+        </li>
+        <button>
+            <a href="{% url 'EliminaPasajero' pa.id_vuelo %}"> Eliminar Pasajero</a>
+        </button>
+        <button>
+            <a href="{% url 'EditarPasajero' pa.id_vuelo %}"> Editar Pasajero</a>
+        </button>
 
-        <ul>
-            <li>Nombre: {{pasajero.nombre}}</li>
-            <li>Apelido: {{pasajero.apellido}}</li>
-            <li>Documento: {{pasajero.documento}}</li>
-            <li>Numero de vuelo: {{pasajero.id_vuelo}}</li>
+    </ul>
 
-            <button>
-            <a href="{% url 'EliminaPasajero' pasajero.id_vuelo %}"> Eliminar Pasajero</a>
-            </button>
-            <button>
-                <a href="{% url 'EditarPasajero' pasajero.id_vuelo %}"> Editar Pasajero</a>
-            </button>
-            <li>------------------------------------</li>
-
-        </ul>
-        
     {% endfor %}
 
 </div>
+
+
+<button>
+    <a href="{% url 'Crear Pasajeros' %}"> Agregar otro Pasajero</a>
+</button>
+
+
 {% endblock %}
