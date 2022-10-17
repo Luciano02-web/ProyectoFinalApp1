@@ -3,10 +3,10 @@
 
 {% block titulo %}
 
-<h3 style="color:rgb(0, 9, 4) ;">
+<h2 style="color:rgb(0, 9, 4) ;">
 Esta página mostrará los vuelos.
 
-</h3>
+</h2>
 {% endblock %}
 
 
@@ -21,11 +21,16 @@ Esta página mostrará los vuelos.
         <li>        
             Numero de vuelo: {{v.id_vuelo}}--Salida: {{v.salida}}--Destino: {{v.destino}}--Dia: {{v.fecha}}--Hora de salida: {{v.hora_de_salida}}
         </li>
-        <button>
-            <a href="{% url 'EliminaVuelo' v.id_vuelo %}">Eliminar Vuelo</a>
+        <button style="background-color:black; border-color: forestgreen">
+            <em>
+                <a href="{% url 'EliminaVuelo' v.id_vuelo %}">Eliminar Vuelo</a>
+            </em>
         </button>
-        <button>
-            <a href="{% url 'EditaVuelo' v.id_vuelo %}">Editar Vuelo</a>
+        
+        <button style="background-color:black; border-color: forestgreen">
+            <em>
+                <a href="{% url 'EditaVuelo' v.id_vuelo %}">Editar Vuelo</a>
+            </em>
         </button>
 
     </ul>
@@ -35,8 +40,10 @@ Esta página mostrará los vuelos.
 </div>
 
 
-<button>
-    <a href="{% url 'Crear Vuelos' %}"> Agregar otro Vuelo</a>
+<button style="background-color:black; border-color: forestgreen">
+    <em>
+        <a href="{% url 'Crear Vuelos' %}"> Agregar otro Vuelo</a>
+    </em>
 </button>
 
 

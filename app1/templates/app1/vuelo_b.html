@@ -3,7 +3,9 @@
 
 {% block titulo %}
 
-Esta página mostrará los vuelos.
+<h4>
+    Esta página mostrará los vuelos.
+</h4>
 
 {% endblock %}
 
@@ -13,8 +15,9 @@ Esta página mostrará los vuelos.
 
 
 <div>
-
-    <p>Estas buscando el vuelo con lugar de salida: {{busqueda}}</p>
+    <h5>
+        <p>Estas buscando el vuelo con lugar de salida: {{busqueda}}</p>
+    </h5>
 
     {% for vuelo in vuelos %}
 
@@ -26,11 +29,16 @@ Esta página mostrará los vuelos.
             <li>Hora de salida: {{vuelo.hora_de_salida}}</li>
 
             
-            <button>
-                <a href="{% url 'EliminaVuelo' vuelo.id_vuelo %}"> Eliminar Vuelo</a>
+            <button style="background-color:black; border-color: forestgreen">
+                <em>
+                    <a href="{% url 'EliminaVuelo' vuelo.id_vuelo %}"> Eliminar Vuelo</a>
+                </em>
             </button>
-            <button>
-                <a href="{% url 'EditaVuelo' vuelo.id_vuelo %}"> Editar Vuelo</a>
+            
+            <button style="background-color:black; border-color: forestgreen">
+                <em>
+                    <a href="{% url 'EditaVuelo' vuelo.id_vuelo %}"> Editar Vuelo</a>
+                </em>
             </button>
 
         </ul>
@@ -38,8 +46,10 @@ Esta página mostrará los vuelos.
     {% endfor %}
 
 
-<button>
-    <a href="{% url 'Crear Vuelos' %}"> Agregar otro Vuelo</a>
+<button style="background-color:black; border-color: forestgreen">
+    <em>
+        <a href="{% url 'Crear Vuelos' %}"> Agregar otro Vuelo</a>
+    </em>
 </button>
     
 

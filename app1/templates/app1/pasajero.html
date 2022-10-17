@@ -20,11 +20,16 @@ Esta página mostrará los Pasajeros.
         <li>
             Nombre: {{pa.nombre}}--Apelido: {{pa.apellido}}--Documento: {{pa.documento}}--Numero de vuelo: {{pa.id_vuelo}}
         </li>
-        <button>
-            <a href="{% url 'EliminaPasajero' pa.id_vuelo %}"> Eliminar Pasajero</a>
+        <button style="background-color:black; border-color: forestgreen">
+            <em>
+                <a href="{% url 'EliminaPasajero' pa.id_vuelo %}"> Eliminar Pasajero</a>
+            </em>
         </button>
-        <button>
-            <a href="{% url 'EditarPasajero' pa.id_vuelo %}"> Editar Pasajero</a>
+
+        <button style="background-color:black; border-color: forestgreen">
+            <em>
+                <a href="{% url 'EditarPasajero' pa.id_vuelo %}"> Editar Pasajero</a>
+            </em>
         </button>
 
     </ul>
@@ -34,8 +39,10 @@ Esta página mostrará los Pasajeros.
 </div>
 
 
-<button>
-    <a href="{% url 'Crear Pasajeros' %}"> Agregar otro Pasajero</a>
+<button style="background-color:black; border-color: forestgreen">
+    <em>
+        <a href="{% url 'Crear Pasajeros' %}"> Agregar otro Pasajero</a>
+    </em>
 </button>
 
 

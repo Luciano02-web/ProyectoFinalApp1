@@ -1,0 +1,36 @@
+{% extends "app1/padre2.html" %}
+
+
+
+{% block titulo %}
+
+<h2>
+    <p>Edite datos del usuario: {{usuario}}</p>
+</h2>
+
+{% endblock %}
+
+
+
+{% block descripcion %}
+
+<form action = "" method="POST"> {% csrf_token %}
+            
+    <table>
+        <p>
+
+            <div>
+                    
+                {{miForm.as_table}}
+
+            </div>
+            
+        </p>
+    </table>
+
+                    
+    <input type="submit" value="ENVIAR">
+                    
+</form> 
+
+{% endblock %}

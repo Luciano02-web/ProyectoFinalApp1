@@ -34,3 +34,15 @@ class FormularioRegistro(UserCreationForm):
 
         model = User
         fields = ["username","first_name","last_name","email","password1","password2"]
+
+class FormularioEditarUsuario(UserCreationForm):
+    email = forms.EmailField(label='Ingrese email')
+    first_name= forms.CharField(label='Ingrese nombre')
+    last_name= forms.CharField(label='Ingrese apellido')
+    password1 = forms.CharField(label='Ingrese la contraseña', widget=forms.PasswordInput)
+    password2 = forms.CharField(label='Repita la contraseña', widget=forms.PasswordInput)
+
+    class Meta:
+
+        model = User
+        fields = ["first_name","last_name","email","password1","password2"]

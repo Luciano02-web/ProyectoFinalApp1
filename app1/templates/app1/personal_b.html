@@ -4,7 +4,9 @@
 
 {% block titulo %}
 
-Esta página mostrará el personal.
+<h4>
+    Esta página mostrará el personal.
+</h4>
 
 {% endblock %}
 
@@ -13,8 +15,9 @@ Esta página mostrará el personal.
 
 
 <div>
-
-    <p>Estás buscando el personal con profesion: {{busqueda_per}}</p>
+    <h5>
+        <p>Estás buscando el personal con profesion: {{busqueda_per}}</p>
+    </h5>
 
     {% for personal in personas %}
 
@@ -24,12 +27,16 @@ Esta página mostrará el personal.
             <li>Profesion: {{personal.profesion}}</li>
             <li>Numero de vuelo: {{personal.id_vuelo}}</li>
 
-            <button>
-                <a href="{% url 'EliminaPersonal' personal.profesion %}"> Eliminar Personal</a>
+            <button style="background-color:black; border-color: forestgreen">
+                <em>
+                    <a href="{% url 'EliminaPersonal' personal.profesion %}"> Eliminar Personal</a>
+                </em>
             </button>
 
-            <button>
-                <a href="{% url 'EditarPersonal' personal.profesion %}"> Editar Personal</a>
+            <button style="background-color:black; border-color: forestgreen">
+                <em>
+                    <a href="{% url 'EditarPersonal' personal.profesion %}"> Editar Personal</a>
+                </em>
             </button>
 
         </ul>
@@ -38,8 +45,10 @@ Esta página mostrará el personal.
 
 </div>
 
-<button>
-    <a href="{% url 'Crear Personal' %}"> Agregar otro Personal</a>
+<button style="background-color:black; border-color: forestgreen">
+    <em>
+        <a href="{% url 'Crear Personal' %}"> Agregar otro Personal</a>
+    </em>
 </button>
 
 
