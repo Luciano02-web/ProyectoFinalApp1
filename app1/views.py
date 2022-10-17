@@ -33,12 +33,13 @@ def InicioSesion(request):
             user = authenticate(username = usuario, password = contra)
             if user:
                 login(request, user)
-                return render(request, "app1/inicio.html", {"mensaje":f"Bienvenido {user}"})
+                return render(request, "app1/inicio.html", {"mensaje":f"Bienvenido/a {user}"})
         else:
             return render(request, "app1/inicio.html", {"mensaje": "Datos incorrectos"})
     else:
         form = AuthenticationForm()
     return render(request, "app1/login.html", {"f1":form})
+
 
 def registro(request):
     if request.method == "POST":
@@ -57,10 +58,13 @@ def registro(request):
 #  VUELOS  #
 ############
 
+@login_required
 def vuelo(request):
     return render(request,'app1/vuelo.html')
 
+
 #CREACION DE VUELOS
+@login_required
 def formulariovuelo(request):
     if request.method=="POST":#si yo le doy al boton GO
         formulariovuelo = FormuVuelo(request.POST)
@@ -73,11 +77,14 @@ def formulariovuelo(request):
         formulariovuelo = FormuVuelo()
     return render(request,"app1/FVuelo.html",{"formulario1":formulariovuelo})#cuando entro a la pagina web por primera vez sale este return
 
+
 #BUSQUEDA DE VUELOS
+@login_required
 def busquedaVuelos(request):
     return render(request,"app1/busquedaVuelos.html")
 
 
+@login_required
 def buscar(request):
     if request.GET["salida"]:
         busqueda = request.GET["salida"]
@@ -87,6 +94,7 @@ def buscar(request):
         mensaje="No enviaste datos."
     return HttpResponse(f"Estoy buscando el vuelo que sale de: {busqueda}")
 
+
 @login_required
 #LEER VUELOS
 def leerVuelos(request):
@@ -94,6 +102,8 @@ def leerVuelos(request):
     contexto = {"fly":fly}
     return render(request,"app1/vuelo.html",contexto)
 
+
+@login_required
 #ELIMINAR VUELOS
 def eliminaVuelo(request, numVuelo):
     idvuelo= Vuelo.objects.get(id_vuelo=numVuelo)
@@ -102,7 +112,9 @@ def eliminaVuelo(request, numVuelo):
     contextov = {"fly":vuelos}
     return render (request, "App1/vuelo.html", contextov)
 
+
 #EDITAR VUELOS
+@login_required
 def editaVuelo(request, numVuelo):
     idvuelo = Vuelo.objects.get(id_vuelo=numVuelo)
 
@@ -134,6 +146,8 @@ def editaVuelo(request, numVuelo):
 def personal(request):
     return render(request,'app1/personal.html')
 
+
+@login_required
 #CREACION DE PERSONAL
 def formulariopersonal(request):
     if request.method=="POST":
@@ -147,11 +161,14 @@ def formulariopersonal(request):
         formulariopersonal = FormuPersonal()
     return render(request,"app1/FPersonal.html",{"formulario2":formulariopersonal})
 
+
+@login_required
 #BUSQUEDA DE PERSONAL
 def busquedaPersonal(request):
     return render(request,"app1/busquedaPersonal.html")
 
 
+@login_required
 def buscar_per(request):
     if request.GET["profesion"]:
         busqueda_per = request.GET["profesion"]
@@ -161,6 +178,7 @@ def buscar_per(request):
         mensaje="No enviaste datos."
     return HttpResponse(f"Estoy buscando la profesión: {busqueda_per}")
 
+
 @login_required
 #LEER PERSONAL
 def leerPersonal(request):
@@ -168,6 +186,8 @@ def leerPersonal(request):
     contexto = {"persona":persona}
     return render(request,"app1/personal.html",contexto)
 
+
+@login_required
 #ELIMINAR PERSONAL
 def eliminaPersonal(request, profesionPersonal):
     profesionPe= Personal.objects.get(profesion=profesionPersonal)
@@ -176,6 +196,8 @@ def eliminaPersonal(request, profesionPersonal):
     contextoPe = {"staff":personalElim}
     return render (request, "App1/personal.html", contextoPe)
 
+
+@login_required
 #EDITAR PERSONAL
 def editarPersonal(request, profesionPersonal):
     profesion= Personal.objects.get(profesion=profesionPersonal)
@@ -205,10 +227,12 @@ def editarPersonal(request, profesionPersonal):
 # PASAJERO #
 ############
 
-
+@login_required
 def pasajero(request):
     return render(request,'app1/pasajero.html')
 
+
+@login_required
 # CREACION DE PASAJERO
 def formulariopasajero(request):
     if request.method=="POST":
@@ -222,11 +246,13 @@ def formulariopasajero(request):
         formulariopasajero = FormuPasajero()
     return render(request,"app1/FPasajero.html",{"formulario3":formulariopasajero})
 
+
+@login_required
 #BUSQUEDA DE PASAJERO
 def busquedaPasajero(request):
     return render(request,"app1/busquedaPasajero.html")
 
-
+@login_required
 def buscar_pasa(request):
     if request.GET["id_vuelo"]:
         busqueda_pasa = request.GET["id_vuelo"]
@@ -243,6 +269,8 @@ def leerPasajero(request):
     contexto = {"pasa":pasa}
     return render(request,"app1/pasajero.html",contexto)  
 
+
+@login_required
 #ELIMINAR PASAJERO
 def eliminaPasajero(request, idvueloPasajero):
     elimPasajero= Pasajero.objects.get(id_vuelo=idvueloPasajero)
@@ -252,6 +280,8 @@ def eliminaPasajero(request, idvueloPasajero):
     contextoPa = {"staff":pasajeroElim}
     return render (request, "App1/pasajero.html", contextoPa)
 
+
+@login_required
 #EDITAR PASAJERO
 def editarPasajero(request, idvueloPasajero):
     editPasajero= Pasajero.objects.get(id_vuelo=idvueloPasajero)
@@ -274,7 +304,35 @@ def editarPasajero(request, idvueloPasajero):
         "documento": editPasajero.documento, "id_vuelo":editPasajero.id_vuelo })
     return render(request,"app1/editarPasajero.html",{"formulario3":formulariopasajero, "idvueloPasajero": idvueloPasajero })
 
+
 @login_required
 #BUSCADOR
 def bus(request):
     return render(request,"app1/buscar.html")
+
+
+#################
+# EDITARUSUARIO #
+#################
+
+@login_required
+def editarUsuario(request):
+    usuarioConectado= request.user
+    if request.method=="POST":
+        miFormulario = FormularioEditarUsuario(request.POST)
+        if miFormulario.is_valid():
+            info = miFormulario.cleaned_data
+            usuarioConectado.first_name = info["first_name"]
+            usuarioConectado.last_name = info["last_name"]
+            usuarioConectado.email = info["email"]
+            usuarioConectado.password1 = info["password1"]
+            usuarioConectado.password2 = info["password2"]
+            usuarioConectado.save()
+            return render(request,"app1/inicio.html")
+    else:
+        miFormulario = FormularioEditarUsuario(initial={
+            "first_name": usuarioConectado.first_name,
+            "last_name": usuarioConectado.last_name,
+            "email": usuarioConectado.email,
+            })
+    return render(request,"app1/editarUsuario.html",{"miForm":miFormulario, "usuario": usuarioConectado })

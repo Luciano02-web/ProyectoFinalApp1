@@ -22,11 +22,16 @@ Esta página mostrará el personal.
         <li>        
             Nombre: {{pe.nombre}}--Apellido: {{pe.apellido}}--Profesion: {{pe.profesion}}--Numero de vuelo: {{pe.id_vuelo}}
         </li>
-        <button>
-            <a href="{% url 'EliminaPersonal' pe.profesion %}"> Eliminar Personal</a>
+        <button style="background-color:black; border-color: forestgreen">
+            <em>
+                <a href="{% url 'EliminaPersonal' pe.profesion %}"> Eliminar Personal</a>
+            </em>
         </button>
-        <button>
-            <a href="{% url 'EditarPersonal' pe.profesion %}"> Editar Personal</a>
+
+        <button style="background-color:black; border-color: forestgreen">
+            <em>
+                <a href="{% url 'EditarPersonal' pe.profesion %}"> Editar Personal</a>
+            </em>
         </button>
 
     </ul>
@@ -36,8 +41,10 @@ Esta página mostrará el personal.
 </div>
 
 
-<button>
-    <a href="{% url 'Crear Personal' %}"> Agregar otro Personal</a>
+<button style="background-color:black; border-color: forestgreen">
+    <em>
+        <a href="{% url 'Crear Personal' %}"> Agregar otro Personal</a>
+    </em>
 </button>
 
 

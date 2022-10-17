@@ -4,7 +4,7 @@
 
 
 {% block titulo %}
-<h2 style="color:black;">
+<h2 style="color:white;">
 Registrate
 </h2>
 {% endblock %}
@@ -14,9 +14,9 @@ Registrate
 
 
 <form action=""method="POST">{% csrf_token %}
-
-
-    {{f2.as_p}}
+    <h6 style="color:white;">
+        {{f2.as_p}}
+    </h6>
 
     
     <button type="submit">Registrarse</button>
