@@ -1,8 +1,35 @@
 # Entrega1-Bogarin
-Proyecto final Luciano Bogarin, para el curso de Python en Coderhouse utilizando el framework de Django.
+Proyecto final Curso de Python de Coderhouse utilizando el framework de Django.
 
-Para correr el proyecto es necesario poner en el terminal de vsc python manage.py check app1, python manage.py makemigrations, python manage.py sqlmigrate app1 0004, 
-python manage.py migrate, python manage.py runserver 
+Integrantes:
+Luciano Bogarin
+Luis Giacomelli
+Luis Tumbarello
 
-Una vez el programa ya este corriendo ya podemos entrar a nuestro navegador y poner localhost:8000/app1/
-y una vez dentro(nos va aparecer la plantilla de inicio) ya podemos tocar cualquiera de las opciones, ya sea para crear o para buscar.
+Lanzamos el servidor desde el Visual Studio Code y una vez que el programa ya este corriendo ya podemos entrar a nuestro navegador y poner localhost:8000/app1/
+y una vez dentro(nos va aparecer la plantilla de inicio) ya podemos tocar cualquiera de las opciones disponibles en pantalla.
+
+El desarrollo se dividio de la siguiente manera:
+
+Luciano Bogarin
+*Read
+*Buscar
+*Html
+*Templates
+*Adaptacion Bootstrap
+*Funcion Login
+
+Luis Giacomelli
+*Funcion Logout
+*Templates
+*Html
+*Adaptacion Bootstrap
+
+Luis Tumbarello
+*Editar
+*Eliminar
+*Templates
+*Readme
+*Video Explicativo
+
+
