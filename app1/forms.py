@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+from app1.models import Avatar
+
 
 class FormuVuelo(forms.Form):
     id_vuelo = forms.IntegerField()
@@ -46,3 +48,10 @@ class FormularioEditarUsuario(UserCreationForm):
 
         model = User
         fields = ["first_name","last_name","email","password1","password2"]
+
+class FormuAvatar(forms.ModelForm):
+
+    class Meta:
+
+        model = Avatar
+        fields = ["usuario", "imagen"]

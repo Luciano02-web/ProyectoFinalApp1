@@ -1,0 +1,28 @@
+{% extends "app1/padre.html" %}
+
+
+{% block titulo %}
+<h1 style="color:white">
+    Aca podemos agregar un Avatar.
+</h1>
+{% endblock %}
+
+
+
+{% block descripcion %}
+
+<form action=""method="POST" enctype="multipart/form-data">{% csrf_token %}
+
+    <h6 style="color:rgb(0, 0, 0);">
+        {{formulario.as_p}}
+    </h6>
+    
+    <button type="submit">enviar</button>
+
+
+
+</form>
+
+{% endblock %}
+
+
