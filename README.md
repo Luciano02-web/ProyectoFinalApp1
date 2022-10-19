@@ -1,4 +1,4 @@
-# Entrega1-Bogarin
+# ProyectoFinal
 Proyecto final Curso de Python de Coderhouse utilizando el framework de Django.
 
 Integrantes:
