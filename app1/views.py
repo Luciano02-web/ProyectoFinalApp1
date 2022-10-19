@@ -336,3 +336,30 @@ def editarUsuario(request):
             "email": usuarioConectado.email,
             })
     return render(request,"app1/editarUsuario.html",{"miForm":miFormulario, "usuario": usuarioConectado })
+
+#################
+# Avatar #
+#################
+
+@login_required
+def agregarAvatar(request):
+    
+    if request.method=="POST":
+
+        form = FormuAvatar(request.POST, request.FILES)
+
+        if form.is_valid():
+
+            usuarioActual = User.objects.get(username=request.user)
+
+            avatar = Avatar(usuario=usuarioActual, imagen=form.cleaned_data["imagen"])
+
+            avatar.save()
+
+            return render(request, "app1/inicio.html")
+    
+    else:
+
+        form = FormuAvatar()
+
+    return render(request, "app1/agregarAvatar.html", {"formulario":form})

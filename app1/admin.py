@@ -7,3 +7,4 @@ from app1.models import *
 admin.site.register(Vuelo)
 admin.site.register(Personal)
 admin.site.register(Pasajero)
+admin.site.register(Avatar)

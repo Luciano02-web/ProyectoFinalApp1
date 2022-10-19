@@ -46,5 +46,6 @@ urlpatterns = [
 
 #URL DE EDICIONUSUARIO
     path('editUser/',editarUsuario, name="Editar Usuario"),
+    path('avatar/', agregarAvatar, name="Avatar"),
 
     ]
