@@ -337,9 +337,9 @@ def editarUsuario(request):
             })
     return render(request,"app1/editarUsuario.html",{"miForm":miFormulario, "usuario": usuarioConectado })
 
-#################
+##########
 # Avatar #
-#################
+##########
 
 @login_required
 def agregarAvatar(request):
@@ -363,3 +363,10 @@ def agregarAvatar(request):
         form = FormuAvatar()
 
     return render(request, "app1/agregarAvatar.html", {"formulario":form})
+
+##########
+# About #
+##########
+
+def sobrenosotros(request):
+    return render(request,'app1/sobrenosotros.html')

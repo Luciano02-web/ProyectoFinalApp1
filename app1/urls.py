@@ -8,6 +8,7 @@ urlpatterns = [
     path('vuelo/', vuelo),
     path('personal/', personal),
     path('pasajero/', pasajero),
+    path('sobrenostros', sobrenosotros, name="Sobrenosotros"),
 
 #URL DE CREACION
     path('formulario1/', formulariovuelo, name="Crear Vuelos"),
