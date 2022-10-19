@@ -1,5 +1,19 @@
 # ProyectoFinal
-Proyecto final Curso de Python de Coderhouse utilizando el framework de Django.
+Proyecto final Curso de Python de Coderhouse
+
+Se ha creado una pagina para poder registrar vuelos aereos, personal de flota y pasajeros.
+
+Para utilizar la pagina es necesario la creacion de un usuario que nos luego nos permita navegar por los distintos menus disponibles.
+En cada una de las opciones podremos leer, modificar, editar y eliminar los registros cargados para cada una de las opciones disponibles (Vuelo, Pasajeros y Personal)
+
+Para el Backend se utilizo:
+Python 3.10.4
+Django 4.0
+
+Para el Frontend se utilizo:
+HTML 5
+Bootstrap 5.2
+
 
 Integrantes:
 Luciano Bogarin,
