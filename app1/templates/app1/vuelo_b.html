@@ -29,6 +29,8 @@
             <li>Hora de salida: {{vuelo.hora_de_salida}}</li>
 
             
+            {% if request.user.is_superuser %}
+
             <button style="background-color:black; border-color: forestgreen">
                 <em>
                     <a href="{% url 'EliminaVuelo' vuelo.id_vuelo %}"> Eliminar Vuelo</a>
@@ -41,16 +43,28 @@
                 </em>
             </button>
 
+            {% else %}
+
+            ----------------------------
+
+            {% endif %}
+
         </ul>
         
     {% endfor %}
 
+
+{% if request.user.is_superuser %}
 
 <button style="background-color:black; border-color: forestgreen">
     <em>
         <a href="{% url 'Crear Vuelos' %}"> Agregar otro Vuelo</a>
     </em>
 </button>
+
+{% else %}
+    
+{% endif %}
     
 
 </div>

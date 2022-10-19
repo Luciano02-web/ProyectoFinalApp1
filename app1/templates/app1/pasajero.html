@@ -4,7 +4,7 @@
 
 {% block titulo %}
 <h3 style="color:rgb(0, 9, 4) ;">
-Esta página mostrará los Pasajeros.
+Esta página mostrará los pasajeros.
 </h3>
 {% endblock %}
 
@@ -20,6 +20,9 @@ Esta página mostrará los Pasajeros.
         <li>
             Nombre: {{pa.nombre}}--Apelido: {{pa.apellido}}--Documento: {{pa.documento}}--Numero de vuelo: {{pa.id_vuelo}}
         </li>
+
+        {% if request.user.is_superuser %}
+
         <button style="background-color:black; border-color: forestgreen">
             <em>
                 <a href="{% url 'EliminaPasajero' pa.id_vuelo %}"> Eliminar Pasajero</a>
@@ -32,18 +35,31 @@ Esta página mostrará los Pasajeros.
             </em>
         </button>
 
+        {% else %}
+
+        ----------------------------
+
+        {% endif %}
+
     </ul>
 
     {% endfor %}
 
 </div>
 
+{% if request.user.is_superuser %}
 
 <button style="background-color:black; border-color: forestgreen">
     <em>
         <a href="{% url 'Crear Pasajeros' %}"> Agregar otro Pasajero</a>
     </em>
 </button>
+
+{% else %}
+
+{% endif %}
+
+
 
 
 {% endblock %}

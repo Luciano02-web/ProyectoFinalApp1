@@ -21,6 +21,8 @@
 
                 <a class="navbar-brand" href="{% url 'Editar Usuario' %}">Editar Usuario</a>
                 <a class="navbar-brand" href="{% url 'Logout' %}">Cerrar sesión</a>
+                <a class="navbar-brand" href="{% url 'Avatar' %}">Agegar avatar</a>
+
                 <a class="navbar-brand">{{user.username}}</a>
 
                 {% with user.avatar_set.first as miAvatar %}

@@ -27,6 +27,8 @@
             <li>Profesion: {{personal.profesion}}</li>
             <li>Numero de vuelo: {{personal.id_vuelo}}</li>
 
+            {% if request.user.is_superuser %}
+
             <button style="background-color:black; border-color: forestgreen">
                 <em>
                     <a href="{% url 'EliminaPersonal' personal.profesion %}"> Eliminar Personal</a>
@@ -39,17 +41,30 @@
                 </em>
             </button>
 
+            {% else %}
+
+            ----------------------------
+
+            {% endif %}
+
         </ul>
         
     {% endfor %}
 
 </div>
 
+{% if request.user.is_superuser %}
+
 <button style="background-color:black; border-color: forestgreen">
     <em>
         <a href="{% url 'Crear Personal' %}"> Agregar otro Personal</a>
     </em>
 </button>
+
+{% else %}
+
+{% endif %}
+
 
 
 {% endblock %}

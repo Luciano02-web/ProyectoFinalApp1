@@ -22,6 +22,9 @@ Esta página mostrará el personal.
         <li>        
             Nombre: {{pe.nombre}}--Apellido: {{pe.apellido}}--Profesion: {{pe.profesion}}--Numero de vuelo: {{pe.id_vuelo}}
         </li>
+
+        {% if request.user.is_superuser %}
+
         <button style="background-color:black; border-color: forestgreen">
             <em>
                 <a href="{% url 'EliminaPersonal' pe.profesion %}"> Eliminar Personal</a>
@@ -34,18 +37,30 @@ Esta página mostrará el personal.
             </em>
         </button>
 
+        {% else %}
+
+        ----------------------------
+
+        {% endif %}
+
     </ul>
 
     {% endfor %}
 
 </div>
 
+{% if request.user.is_superuser %}
 
 <button style="background-color:black; border-color: forestgreen">
     <em>
         <a href="{% url 'Crear Personal' %}"> Agregar otro Personal</a>
     </em>
 </button>
+
+{% else %}
+
+{% endif %}
+
 
 
 {% endblock %}
