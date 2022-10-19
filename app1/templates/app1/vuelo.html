@@ -21,6 +21,9 @@ Esta página mostrará los vuelos.
         <li>        
             Numero de vuelo: {{v.id_vuelo}}--Salida: {{v.salida}}--Destino: {{v.destino}}--Dia: {{v.fecha}}--Hora de salida: {{v.hora_de_salida}}
         </li>
+                
+        {% if request.user.is_superuser %}
+
         <button style="background-color:black; border-color: forestgreen">
             <em>
                 <a href="{% url 'EliminaVuelo' v.id_vuelo %}">Eliminar Vuelo</a>
@@ -33,6 +36,12 @@ Esta página mostrará los vuelos.
             </em>
         </button>
 
+        {% else %}
+
+        ----------------------------
+
+        {% endif %}
+
     </ul>
 
     {% endfor %}
@@ -40,12 +49,17 @@ Esta página mostrará los vuelos.
 </div>
 
 
+{% if request.user.is_superuser %}
+
 <button style="background-color:black; border-color: forestgreen">
     <em>
         <a href="{% url 'Crear Vuelos' %}"> Agregar otro Vuelo</a>
     </em>
 </button>
 
+{% else %}
+
+{% endif %}
 
 
 

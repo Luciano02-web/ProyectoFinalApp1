@@ -193,7 +193,7 @@ def eliminaPersonal(request, profesionPersonal):
     profesionPe= Personal.objects.get(profesion=profesionPersonal)
     profesionPe.delete()
     personalElim = Personal.objects.all()
-    contextoPe = {"staff":personalElim}
+    contextoPe = {"persona":personalElim}
     return render (request, "App1/personal.html", contextoPe)
 
 
@@ -277,7 +277,7 @@ def eliminaPasajero(request, idvueloPasajero):
     elimPasajero.delete()
 
     pasajeroElim = Pasajero.objects.all()
-    contextoPa = {"staff":pasajeroElim}
+    contextoPa = {"pasa":pasajeroElim}
     return render (request, "App1/pasajero.html", contextoPa)
 
 

@@ -1,7 +1,5 @@
 {% extends "app1/padre.html" %}
 
-{% load static %}
-
 
 {% block titulo %}
 <h2 style="color:white;">
@@ -14,6 +12,7 @@ Registrate
 
 
 <form action=""method="POST">{% csrf_token %}
+    
     <h6 style="color:white;">
         {{f2.as_p}}
     </h6>
