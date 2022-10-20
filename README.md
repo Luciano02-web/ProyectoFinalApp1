@@ -46,4 +46,6 @@ Luis Tumbarello
 *Readme
 *Video Explicativo
 
-
+DATOS DE INGRESO USUARIO MASTER
+USUARIO: LUIS
+CONTRASEÑA: LUIS
